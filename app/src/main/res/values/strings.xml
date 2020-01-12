@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Notes</string>
-    <string name="login">Login</string>
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="welcome">Welcome</string>
     <string name="note_title">Title</string>
     <string name="note_content">Content</string>
     <string name="title_activity_notes">NotesActivity</string>
+    <string name="title_activity_notes_and_menu">NotesAndMenu</string>
+    <string name="userName">Username</string>
+    <string name="anchors">Anchors</string>
+    <string name="addAnchor">Add Anchor</string>
+    <string name="notes">Notes</string>
+    <string name="trashBin">Trash Bin</string>
+    <string name="management">Management</string>
 </resources>

@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIntent = new Intent(MainActivity.this, NotesActivity.class);
-                startActivity(newIntent);
+                startActivity(new Intent(MainActivity.this, NotesActivity.class));
+                Log.d(TAG, "Error on activities switching");
             }
         });
     }
