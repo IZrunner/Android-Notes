@@ -10,26 +10,6 @@
     tools:openDrawer="start"
     android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/notes_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_anchor="@+id/notes_list"
-        app:layout_anchorGravity="center">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_add"
-            app:layout_anchor="@id/notes_list"
-            app:layout_anchorGravity="bottom|right|end"/>
-    </ScrollView>
-
-
     <!-- Before activating toolbar - change main layout to DrawerLayout -->
 
     <!--LinearLayout
@@ -58,5 +38,23 @@
         android:id="@+id/nav_view"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"/-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notes_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/notes_list"
+        app:layout_anchorGravity="center"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_add"
+            app:layout_anchor="@id/notes_list"
+            app:layout_anchorGravity="bottom|right|end"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

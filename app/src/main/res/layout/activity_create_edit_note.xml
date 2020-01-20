@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:hint="@string/note_title"/>
 
     <EditText
         android:id="@+id/note_content"
@@ -22,7 +23,8 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/note_title"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:hint="@string/note_content"/>
 
     <Button
         android:id="@+id/save_note_button"
