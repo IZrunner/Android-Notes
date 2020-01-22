@@ -1,56 +1,36 @@
 package com.example.notes;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class NotesActivity extends AppCompatActivity {
     private static final String TAG = "NotesActivity";
-    @BindView(R.id.notes_list)
+    @BindView(R.id.notes_list) //needed view; use ButterKnife instead of
+                               // View someView = (View) findViewById(R.id.someView)
     RecyclerView rvNotes;
 
-    RecyclerView.Adapter adapter;
-    List<Note> notesList;
-
+    RecyclerView.Adapter adapter; //adapter to get notes
+    List<Note> notesList; //all our notes to be put into RecyclerView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        ButterKnife.bind(this); //to make ButterKnife work
 
-        ButterKnife.bind(this);
-
-        initViews();
-        loadNotes();
-
-//        FloatingActionButton mFAB = findViewById(R.id.floating_action_button);
-//        mFAB.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(NotesActivity.this, CreateEditNoteActivity.class));
-//                Log.d(TAG, "Error on activities switching");
-//            }
-//        });
+        initViews(); //make notes visible
+        loadNotes(); //load notes from DB
     }
 
     private void initViews() {
-
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -59,11 +39,9 @@ public class NotesActivity extends AppCompatActivity {
 
         notesList = db.getAllNotes();
         if(notesList.size() != 0){
-            adapter = new NotesAdapter(this,notesList);
-            rvNotes.setAdapter(adapter);
+            adapter = new NotesAdapter(this,notesList); //push raw data to adapter
+            rvNotes.setAdapter(adapter); //set adapter to RecyclerView (make notes visible)
         }
-
-
     }
 
     @OnClick(R.id.floating_action_button)

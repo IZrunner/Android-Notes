@@ -1,7 +1,6 @@
 package com.example.notes;
 
 public class Note {
-
     private int id;
     private String title;
     private String note;

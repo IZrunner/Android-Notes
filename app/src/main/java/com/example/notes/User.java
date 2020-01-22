@@ -5,7 +5,6 @@ public class User {
     private String password;
 
     public User(){
-
     }
 
     public User(String username,String password){
@@ -20,7 +19,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
 
     public void setUsername(String username) {
         this.username = username;

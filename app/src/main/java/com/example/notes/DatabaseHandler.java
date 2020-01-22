@@ -6,12 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-
     private static final String TAG = "DatabaseHandler";
 
     private static final int DATABASE_VERSION = 4;
@@ -26,14 +24,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Coloumn Combinations
     private static final String[] COLS_ID_TITLE_NOTE = new String[] {KEY_ID,KEY_TITLE,KEY_NOTE};
 
-
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String CREATE_NOTES_TABLE = "CREATE TABLE " + TABLE_NAME + " ( "
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT"+", "
                 + KEY_TITLE + " TEXT NOT NULL"+ ", "
@@ -43,12 +39,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d(TAG,CREATE_NOTES_TABLE);
 
         db.execSQL(CREATE_NOTES_TABLE);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
         String DROP_TABLE = "DROP TABLE IF EXISTS "+ TABLE_NAME;
 
         Log.d(TAG,DROP_TABLE);
@@ -56,19 +50,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(DROP_TABLE);
 
         onCreate(db);
-
     }
 
     //CRUD OPERATIONS
-
     public void addNote(Note note) {
-
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, note.getTitle());
         values.put(KEY_NOTE, note.getNote());
-
 
         db.insert(TABLE_NAME,null,values);
         db.close();
@@ -76,10 +65,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Note getNote(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-
+        //Cursor provides random read-write access to the result set returned by a database query.
+        //Data is stored in a DB-datatype-type
         Cursor c = db.query(TABLE_NAME,COLS_ID_TITLE_NOTE,KEY_ID +"=?",new String[]{String.valueOf(id)},null,null,null,null);
         if(c != null){
-            c.moveToFirst();
+            c.moveToFirst(); //move Cursor on the first line of query
         }
         db.close();
 
@@ -90,32 +80,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public List<Note> getAllNotes(){
         SQLiteDatabase db = this.getReadableDatabase();
-
         List<Note> noteList = new ArrayList<>();
-
         Cursor cursor = db.query(TABLE_NAME,COLS_ID_TITLE_NOTE,null,null,null,null,null);
 
-
         if(cursor!= null && cursor.moveToFirst()){
-
             do{
                 Note note = new Note();
                 note.setId(Integer.parseInt(cursor.getString(0)));
                 note.setTitle(cursor.getString(1));
                 note.setNote(cursor.getString(2));
                 noteList.add(note);
-
             }while (cursor.moveToNext());
-
-
         }
         db.close();
         return noteList;
-
     }
-
-
-
-
-
 }

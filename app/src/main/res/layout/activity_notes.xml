@@ -39,12 +39,12 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"/-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notes_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_anchor="@+id/notes_list"
-        app:layout_anchorGravity="center"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notes_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_anchor="@+id/notes_list"
+            app:layout_anchorGravity="center"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_action_button"
